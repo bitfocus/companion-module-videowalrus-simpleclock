@@ -10,8 +10,8 @@
       "name": "Video Walrus Ltd"
     }
   ],
-  "repository": "https://github.com/videowalrus/companion-module-videowalrus-simpleclock",
-  "bugs": "https://github.com/videowalrus/companion-module-videowalrus-simpleclock/issues",
+  "repository": "https://github.com/videojedi/companion-module-videowalrus-simpleclock",
+  "bugs": "https://github.com/videojedi/companion-module-videowalrus-simpleclock/issues",
   "legacyIds": [],
   "runtime": {
     "type": "node18",
