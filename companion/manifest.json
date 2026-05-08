@@ -1,0 +1,25 @@
+{
+  "id": "videowalrus-simpleclock",
+  "name": "Video Walrus SimpleClock",
+  "shortname": "SimpleClock",
+  "description": "Control SimpleClock presentation countdown timer",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "Video Walrus Ltd"
+    }
+  ],
+  "repository": "https://github.com/videowalrus/companion-module-videowalrus-simpleclock",
+  "bugs": "https://github.com/videowalrus/companion-module-videowalrus-simpleclock/issues",
+  "legacyIds": [],
+  "runtime": {
+    "type": "node18",
+    "api": "nodejs-ipc",
+    "apiVersion": "0.0.0",
+    "entrypoint": "../src/main.js"
+  },
+  "manufacturer": "Video Walrus",
+  "products": ["SimpleClock"],
+  "keywords": ["timer", "countdown", "clock", "presentation", "speaker"]
+}
