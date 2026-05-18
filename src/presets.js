@@ -259,6 +259,155 @@ function getPresets() {
 		feedbacks: [],
 	}
 
+	// ── Outputs ──
+
+	presets['blank-outputs'] = {
+		type: 'button',
+		category: 'Outputs',
+		name: 'Blank Outputs (toggle)',
+		style: {
+			text: 'BLANK\\nOUTPUTS',
+			size: '14',
+			color: WHITE,
+			bgcolor: BLACK,
+		},
+		steps: [
+			{
+				down: [{ actionId: 'toggle-blank-outputs' }],
+				up: [],
+			},
+		],
+		feedbacks: [
+			{
+				feedbackId: 'outputs-blanked',
+				style: { text: 'OUTPUTS\\nBLANKED', bgcolor: RED, color: WHITE },
+			},
+		],
+	}
+
+	// ── Adjust Time ──
+
+	const adjustments = [
+		['+30s', 30],
+		['-30s', -30],
+		['+1m', 60],
+		['-1m', -60],
+		['+5m', 300],
+		['-5m', -300],
+		['+10m', 600],
+		['-10m', -600],
+	]
+
+	for (const [label, delta] of adjustments) {
+		const sign = delta > 0 ? '+' : '−'
+		const magnitude = label.replace(/^[+-]/, '')
+		presets[`adjust-${label}`] = {
+			type: 'button',
+			category: 'Adjust Time',
+			name: `${label}`,
+			style: {
+				text: `${sign}\\n${magnitude}`,
+				size: '18',
+				color: WHITE,
+				bgcolor: delta > 0 ? combineRgb(0, 80, 0) : combineRgb(80, 0, 0),
+			},
+			steps: [
+				{
+					down: [{ actionId: 'adjust-time', options: { delta } }],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		}
+	}
+
+	// ── Speed ±5% ──
+
+	presets['speed-plus-5'] = {
+		type: 'button',
+		category: 'Speed',
+		name: 'Speed +5%',
+		style: {
+			text: 'SPD\\n+5%',
+			size: '14',
+			color: WHITE,
+			bgcolor: combineRgb(0, 60, 100),
+		},
+		steps: [
+			{
+				down: [{ actionId: 'set-speed', options: { speed: 1.05 } }],
+				up: [],
+			},
+		],
+		feedbacks: [],
+	}
+
+	presets['speed-minus-5'] = {
+		type: 'button',
+		category: 'Speed',
+		name: 'Speed -5%',
+		style: {
+			text: 'SPD\\n-5%',
+			size: '14',
+			color: WHITE,
+			bgcolor: combineRgb(0, 60, 100),
+		},
+		steps: [
+			{
+				down: [{ actionId: 'set-speed', options: { speed: 0.95 } }],
+				up: [],
+			},
+		],
+		feedbacks: [],
+	}
+
+	// ── Transport extras ──
+
+	presets['start'] = {
+		type: 'button',
+		category: 'Transport',
+		name: 'Start',
+		style: { text: 'START', size: '18', color: WHITE, bgcolor: BLACK },
+		steps: [{ down: [{ actionId: 'start' }], up: [] }],
+		feedbacks: [
+			{ feedbackId: 'is-running', style: { bgcolor: GREEN, color: WHITE } },
+		],
+	}
+
+	presets['pause'] = {
+		type: 'button',
+		category: 'Transport',
+		name: 'Pause',
+		style: { text: 'PAUSE', size: '18', color: WHITE, bgcolor: BLACK },
+		steps: [{ down: [{ actionId: 'pause' }], up: [] }],
+		feedbacks: [
+			{
+				feedbackId: 'status-is',
+				options: { status: 'paused' },
+				style: { bgcolor: ORANGE, color: WHITE },
+			},
+		],
+	}
+
+	// ── Mode buttons ──
+
+	presets['mode-countdown'] = {
+		type: 'button',
+		category: 'Transport',
+		name: 'Mode: Countdown',
+		style: { text: 'COUNT\\nDOWN', size: '14', color: WHITE, bgcolor: BLACK },
+		steps: [
+			{ down: [{ actionId: 'set-duration', options: { duration: 300 } }], up: [] },
+		],
+		feedbacks: [
+			{
+				feedbackId: 'mode-is',
+				options: { mode: 'countdown' },
+				style: { bgcolor: BLUE, color: WHITE },
+			},
+		],
+	}
+
 	return presets
 }
 
