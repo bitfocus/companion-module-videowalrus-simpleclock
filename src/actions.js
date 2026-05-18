@@ -193,6 +193,27 @@ function getActions(self) {
 				self.sendCommand({ command: 'dismissMessage' })
 			},
 		},
+		'blank-outputs': {
+			name: 'Blank Outputs (external display, NDI, web)',
+			options: [],
+			callback: () => {
+				self.sendCommand({ command: 'blankOutputs' })
+			},
+		},
+		'show-outputs': {
+			name: 'Show Outputs',
+			options: [],
+			callback: () => {
+				self.sendCommand({ command: 'showOutputs' })
+			},
+		},
+		'toggle-blank-outputs': {
+			name: 'Toggle Blank Outputs',
+			options: [],
+			callback: () => {
+				self.sendCommand({ command: 'toggleBlankOutputs' })
+			},
+		},
 	}
 }
 

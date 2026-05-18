@@ -25,6 +25,8 @@ class SimpleClockInstance extends InstanceBase {
 			isWarning: false,
 			message: null,
 			messageProgress: 0,
+			messageThrob: false,
+			blanked: false,
 			speakers: [],
 			messages: [],
 			activeSpeakerIndex: -1,
@@ -90,7 +92,7 @@ class SimpleClockInstance extends InstanceBase {
 				const msg = JSON.parse(raw.toString())
 				if (msg.state) {
 					this.state = { ...this.state, ...msg.state }
-					this.checkFeedbacks('is-running', 'is-expired', 'is-warning', 'mode-is', 'status-is', 'message-active')
+					this.checkFeedbacks('is-running', 'is-expired', 'is-warning', 'mode-is', 'status-is', 'message-active', 'message-throbbing', 'outputs-blanked')
 					this.updateVariables()
 					// Refresh action definitions so speaker/message dropdowns update
 					this.setActionDefinitions(getActions(this))
@@ -156,6 +158,8 @@ class SimpleClockInstance extends InstanceBase {
 			is_warning: s.isWarning ? 'Yes' : 'No',
 			active_message: s.message || '',
 			message_progress: s.messageProgress != null ? Math.round(s.messageProgress * 100) + '%' : '0%',
+			message_throbbing: s.messageThrob ? 'Yes' : 'No',
+			outputs_blanked: s.blanked ? 'Yes' : 'No',
 			active_speaker_index: s.activeSpeakerIndex >= 0 ? String(s.activeSpeakerIndex + 1) : 'None',
 		}
 

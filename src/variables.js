@@ -13,6 +13,8 @@ function getVariables() {
 		{ variableId: 'is_warning', name: 'Is Warning' },
 		{ variableId: 'active_message', name: 'Active Message Text' },
 		{ variableId: 'message_progress', name: 'Message Progress' },
+		{ variableId: 'message_throbbing', name: 'Message Throbbing' },
+		{ variableId: 'outputs_blanked', name: 'Outputs Blanked' },
 		{ variableId: 'active_speaker_index', name: 'Active Speaker Number' },
 	]
 

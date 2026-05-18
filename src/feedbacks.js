@@ -105,6 +105,32 @@ function getFeedbacks(self) {
 				return self.state.message != null && self.state.message !== ''
 			},
 		},
+		'message-throbbing': {
+			type: 'boolean',
+			name: 'Message Throbbing',
+			description: 'Change button style when a throb (pin) message is on screen',
+			defaultStyle: {
+				bgcolor: combineRgb(255, 120, 0),
+				color: combineRgb(255, 255, 255),
+			},
+			options: [],
+			callback: () => {
+				return self.state.messageThrob === true && self.state.message != null && self.state.message !== ''
+			},
+		},
+		'outputs-blanked': {
+			type: 'boolean',
+			name: 'Outputs Blanked',
+			description: 'Change button style when external display, NDI, and web outputs are blanked',
+			defaultStyle: {
+				bgcolor: combineRgb(180, 0, 0),
+				color: combineRgb(255, 255, 255),
+			},
+			options: [],
+			callback: () => {
+				return self.state.blanked === true
+			},
+		},
 	}
 }
 
