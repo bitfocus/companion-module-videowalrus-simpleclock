@@ -44,3 +44,4 @@ For live development, add the module folder path in Companion's **Developer Modu
 ## License
 
 MIT
+# companion-module-videowalrus-simpleclock
