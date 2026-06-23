@@ -369,9 +369,7 @@ function getPresets() {
 		name: 'Start',
 		style: { text: 'START', size: '18', color: WHITE, bgcolor: BLACK },
 		steps: [{ down: [{ actionId: 'start' }], up: [] }],
-		feedbacks: [
-			{ feedbackId: 'is-running', style: { bgcolor: GREEN, color: WHITE } },
-		],
+		feedbacks: [{ feedbackId: 'is-running', style: { bgcolor: GREEN, color: WHITE } }],
 	}
 
 	presets['pause'] = {
@@ -396,9 +394,7 @@ function getPresets() {
 		category: 'Transport',
 		name: 'Mode: Countdown',
 		style: { text: 'COUNT\\nDOWN', size: '14', color: WHITE, bgcolor: BLACK },
-		steps: [
-			{ down: [{ actionId: 'set-duration', options: { duration: 300 } }], up: [] },
-		],
+		steps: [{ down: [{ actionId: 'set-duration', options: { duration: 300 } }], up: [] }],
 		feedbacks: [
 			{
 				feedbackId: 'mode-is',

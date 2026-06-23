@@ -91,11 +91,24 @@ class SimpleClockInstance extends InstanceBase {
 			try {
 				const msg = JSON.parse(raw.toString())
 				if (msg.state) {
+					// Snapshot the lists that drive action dropdowns before merging
+					const prevActionsKey = this.actionsKey(this.state)
 					this.state = { ...this.state, ...msg.state }
-					this.checkFeedbacks('is-running', 'is-expired', 'is-warning', 'mode-is', 'status-is', 'message-active', 'message-throbbing', 'outputs-blanked')
+					this.checkFeedbacks(
+						'is-running',
+						'is-expired',
+						'is-warning',
+						'mode-is',
+						'status-is',
+						'message-active',
+						'message-throbbing',
+						'outputs-blanked',
+					)
 					this.updateVariables()
-					// Refresh action definitions so speaker/message dropdowns update
-					this.setActionDefinitions(getActions(this))
+					// Rebuild action definitions only when speaker/message lists actually change
+					if (this.actionsKey(this.state) !== prevActionsKey) {
+						this.setActionDefinitions(getActions(this))
+					}
 				}
 			} catch (e) {
 				this.log('warn', `Failed to parse message: ${e.message}`)
@@ -112,6 +125,14 @@ class SimpleClockInstance extends InstanceBase {
 			this.updateStatus(InstanceStatus.ConnectionFailure)
 			this.ws.close()
 		})
+	}
+
+	// Serialise the state fields that drive action dropdown labels, so we can
+	// detect when (and only when) the speaker/message lists change.
+	actionsKey(state) {
+		const speakers = (state.speakers || []).map((sp) => (sp ? `${sp.name}|${sp.minutes}` : '')).join(',')
+		const messages = (state.messages || []).join(',')
+		return `${speakers}#${messages}`
 	}
 
 	scheduleReconnect() {

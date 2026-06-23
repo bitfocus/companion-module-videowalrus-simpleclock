@@ -1,19 +1,23 @@
 {
-  "name": "companion-module-videowalrus-simpleclock",
-  "version": "1.4.1",
-  "main": "src/main.js",
-  "license": "MIT",
-  "scripts": {
-    "package": "companion-module-build"
-  },
-  "engines": {
-    "node": "^18.12 || ^22.8"
-  },
-  "dependencies": {
-    "@companion-module/base": "~1.14.1",
-    "ws": "^8.20.1"
-  },
-  "devDependencies": {
-    "@companion-module/tools": "^2.6.1"
-  }
+	"name": "companion-module-videowalrus-simpleclock",
+	"version": "1.4.2",
+	"main": "src/main.js",
+	"license": "MIT",
+	"scripts": {
+		"format": "prettier -w .",
+		"package": "companion-module-build"
+	},
+	"engines": {
+		"node": "^18.12 || ^22.8"
+	},
+	"dependencies": {
+		"@companion-module/base": "~1.14.1",
+		"ws": "^8.20.1"
+	},
+	"devDependencies": {
+		"@companion-module/tools": "^2.6.1",
+		"prettier": "^3.8.3"
+	},
+	"prettier": "@companion-module/tools/.prettierrc.json",
+	"packageManager": "yarn@4.12.0"
 }

@@ -16,10 +16,10 @@ A [Bitfocus Companion](https://bitfocus.io/companion) module for controlling [Si
 
 ## Configuration
 
-| Setting | Default | Description |
-|---------|---------|-------------|
-| Host | `127.0.0.1` | IP address of the Mac running SimpleClock |
-| Port | `9090` | WebSocket port |
+| Setting | Default     | Description                               |
+| ------- | ----------- | ----------------------------------------- |
+| Host    | `127.0.0.1` | IP address of the Mac running SimpleClock |
+| Port    | `9090`      | WebSocket port                            |
 
 SimpleClock must be running with its Companion WebSocket server active (enabled in the Outputs section of the control panel).
 
@@ -44,4 +44,5 @@ For live development, add the module folder path in Companion's **Developer Modu
 ## License
 
 MIT
+
 # companion-module-videowalrus-simpleclock
